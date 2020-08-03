@@ -21,4 +21,5 @@ limitations under the License. -->
     <string name="team_2">Team 2</string>
     <string name="night_mode">Night Mode</string>
     <string name="day_mode">Day Mode</string>
+    <string name="reset">RESET</string>
 </resources>

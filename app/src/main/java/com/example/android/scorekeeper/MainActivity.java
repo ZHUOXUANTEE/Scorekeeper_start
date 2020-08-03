@@ -19,6 +19,7 @@ package com.example.android.scorekeeper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -68,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        mScore1 = mPreferences.getInt(COUNT_KEY1,0);
+        mScore1 = mPreferences.getInt(COUNT_KEY1,mScore1);
         score_1.setText(String.valueOf(mScore1));
 
-        mScore2 = mPreferences.getInt(COUNT_KEY2, 0);
+        mScore2 = mPreferences.getInt(COUNT_KEY2, mScore2);
         score_2.setText(String.valueOf(mScore2));
     }
 
@@ -156,4 +157,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void reset(View view) {
+
+        // Reset count
+        mScore1 = 0;
+        mScore2 = 0;
+
+        // Reset color
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("nightMode", false);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+        preferencesEditor.clear();
+        preferencesEditor.apply();
+    }
 }
