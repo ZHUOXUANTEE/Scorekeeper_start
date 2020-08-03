@@ -163,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
         mScore1 = 0;
         mScore2 = 0;
 
-        // Reset color
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("nightMode", false);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
