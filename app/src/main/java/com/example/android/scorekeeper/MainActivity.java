@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
         mPreferences = getSharedPreferences(sharedPrefFile, MODE_PRIVATE);
 
-        mNightMode = mPreferences.getBoolean(BACKGROUND_KEY,mNightMode);
+            mNightMode = mPreferences.getBoolean(BACKGROUND_KEY,mNightMode);
+
+            mNightMode = getIntent().getBooleanExtra("nightMode", mNightMode);
 
         if (mNightMode) {
             setTheme(R.style.AppThemeDark);
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
         score_1 = findViewById(R.id.score_1);
         score_2 = findViewById(R.id.score_2);
+
+
 
         mScore1 = mPreferences.getInt(COUNT_KEY1,0);
         score_1.setText(String.valueOf(mScore1));
